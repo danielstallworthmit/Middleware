@@ -6,18 +6,20 @@ class UserList extends React.Component {
     componentWillMount() {
         this.props.fetchUsers();
     }
-    renderUser() {
+
+    renderUser(user) {
         return (
-            <div className="card card-block">
+            <div className="card card-block" key={user.name}>
                 <h4 className="card-title">{user.name}</h4>
-                <p className="card-text">{user.something}</p>
-                <a className="btn btn-primary">{user.otherthing}</a>
+                <p className="card-text">{user.company.name}</p>
+                <a className="btn btn-primary">{user.website}</a>
             </div>
         );
     }
+
     render() {
         return (
-            <div>
+            <div className="user-list">
                 {this.props.users.map(this.renderUser)}
             </div>
         );
